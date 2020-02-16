@@ -5,6 +5,7 @@
 
 const fetch = require('node-fetch');
 const fs = require('fs');
+const chalk = require('react-dev-utils/chalk');
 
 // TODO
 const GRAPHQL_URL = `http://localhost:5000/coffee-7be5e/us-central1/graphql`;
@@ -33,8 +34,8 @@ const fetchSchema = async () => (
     .then(result => result.json())
     .then(result => result.data)
     .catch(error => {
-        console.error('error fetching schema:', error.message);
-        console.warn('take default schema');
+        console.error(chalk.red('Error fetching schema: ' + error.message));
+        console.warn(chalk.yellow('Take default schema'));
         return {
             __schema: {
                 types: [],
@@ -44,12 +45,12 @@ const fetchSchema = async () => (
 );
 
 const createFragmentTypes = async () => {
-    console.log('start creating fragmentTypes.json:');
+    console.log('Start creating fragmentTypes.json:');
 
-    console.log('fetching schema...');
+    console.log('Fetching schema...');
     const data = await fetchSchema();
 
-    console.log('creating fragmentTypes.json...');
+    console.log('Creating fragmentTypes.json...');
     const filteredData = data.__schema.types.filter(type => (
         type.possibleTypes !== null
     ));
@@ -59,16 +60,16 @@ const createFragmentTypes = async () => {
     fs.writeFileSync(
         './src/fragmentTypes.json', 
         JSON.stringify(data), 
-        err => {
+        error => {
             if (err) {
-                console.error('Error writing fragmentTypes file', err);
+                console.error(chalk.red('Error writing fragmentTypes file: ' + error.message));
             } else {
-                console.log('Fragment types successfully extracted!');
+                console.log(chalk.green('Fragment types successfully extracted!'));
             }
         }
     );
 
-    console.log('fragmentTypes.json created');
+    console.log(chalk.green('File fragmentTypes.json created'));
 };
 
 createFragmentTypes();
