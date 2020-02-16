@@ -1,44 +1,19 @@
 // running by "npm build-fragment" (package.json script)
 // see https://www.apollographql.com/docs/react/data/fragments/#fragments-on-unions-and-interfaces
 
-/*
-"build-fragment": "node src/schemaQuery.js",
-"start": "npm run build-fragment && react-scripts start",
-"build": "npm run build-fragment && react-scripts build",
-"test": "react-scripts test",
-"eject": "react-scripts eject"
-*/
+'use strict';
 
 const fetch = require('node-fetch');
 const fs = require('fs');
 
-const BASE_URL = 'https://abc.pscb.ru/b';
-const AUTH_URL = BASE_URL + '/api/v1/auth/login';
-const GRAPHQL_URL = BASE_URL + '/graphql';
+// TODO
+const GRAPHQL_URL = `http://localhost:5000/coffee-7be5e/us-central1/graphql`;
 
-const login = async () => (
-    fetch(AUTH_URL, {
-        method: 'POST',
-        headers: { 
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            username: '', 
-            password: '',
-        }),
-    })
-    .then(result => result.json())
-    .then(result => (
-        result.accessToken
-    ))
-);
-
-const fetchSchema = async token => (
+const fetchSchema = async () => (
     fetch(GRAPHQL_URL, {
         method: 'POST',
         headers: { 
             'Content-Type': 'application/json',
-            'authorization': 'Bearer ' + token
         },
         body: JSON.stringify({
             variables: {},
@@ -57,16 +32,22 @@ const fetchSchema = async token => (
     })
     .then(result => result.json())
     .then(result => result.data)
+    .catch(error => {
+        console.error('error fetching schema:', error.message);
+        console.warn('take default schema');
+        return {
+            __schema: {
+                types: [],
+            },
+        };
+    })
 );
 
 const createFragmentTypes = async () => {
     console.log('start creating fragmentTypes.json:');
 
-    console.log('fetching token...');
-    const token = await login();
-
     console.log('fetching schema...');
-    const data = await fetchSchema(token);
+    const data = await fetchSchema();
 
     console.log('creating fragmentTypes.json...');
     const filteredData = data.__schema.types.filter(type => (
