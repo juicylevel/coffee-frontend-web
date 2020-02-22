@@ -22,14 +22,15 @@ const LayoutWrapper = styled.div`
 const Header = styled.header`
     height: 80px;
 
-    border: 1px solid white;
+    border: 1px solid #c7c7c7;
+    border-bottom: none;
 `;
 
 const Content = styled.main`
     flex-grow: 1;
     overflow-y: auto;
 
-    border: 1px solid white;
+    border: 1px solid #c7c7c7;
 `;
 
 const Layout = ({ children }) => (

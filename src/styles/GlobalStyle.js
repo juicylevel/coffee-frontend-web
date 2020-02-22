@@ -8,7 +8,7 @@ export default createGlobalStyle`
 
     body {
         font-family: 'Roboto', sans-serif;
-        background-image: url(${backgroundImg});
-        color: #f9f9f9;
+        /*background-image: url(${backgroundImg});
+        color: #f9f9f9;*/
     }
 `;
