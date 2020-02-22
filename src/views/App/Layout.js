@@ -2,35 +2,42 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-const HEADER_HEIGHT = 80;
+const CenterWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+`;
 
-const Wrapper = styled.div`
+const LayoutWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    height: 100%;
+    width: 320px;
+    height: 568px;
 
-    background-color: red;
+    border: 1px solid red;
 `;
 
 const Header = styled.header`
-    position: fixed;
-    height: ${HEADER_HEIGHT}px;
-    width: 100%;
+    height: 80px;
 
-    background-color: aliceblue;
+    border: 1px solid aqua;
 `;
 
 const Content = styled.main`
     flex-grow: 1;
-    margin-top: ${HEADER_HEIGHT}px;
+    overflow-y: auto;
 
-    background-color: aqua;
+    border: 1px solid aqua;
 `;
 
 const Layout = ({ children }) => (
-    <Wrapper>
-        {children}
-    </Wrapper>
+    <CenterWrapper>
+        <LayoutWrapper>
+            {children}
+        </LayoutWrapper>
+    </CenterWrapper>
 );
 
 Layout.propTypes = {
