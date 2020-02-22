@@ -16,20 +16,20 @@ const LayoutWrapper = styled.div`
     width: 320px;
     height: 568px;
 
-    border: 1px solid red;
+    // border: 1px solid white;
 `;
 
 const Header = styled.header`
     height: 80px;
 
-    border: 1px solid aqua;
+    border: 1px solid white;
 `;
 
 const Content = styled.main`
     flex-grow: 1;
     overflow-y: auto;
 
-    border: 1px solid aqua;
+    border: 1px solid white;
 `;
 
 const Layout = ({ children }) => (
