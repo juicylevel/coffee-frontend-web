@@ -1,10 +1,13 @@
 import React from 'react';
-import { GlobalStyle } from 'styles';
-import { DataProvider } from 'provider';
+import Layout from './Layout';
 
 export default () => (
-    <DataProvider>
-        <GlobalStyle />
-        <h1 style={{ color: 'white' }}>Coffee!</h1>
-    </DataProvider>
+    <Layout>
+        <Layout.Header>
+            Header
+        </Layout.Header>
+        <Layout.Content>
+            Content
+        </Layout.Content>
+    </Layout>
 );
