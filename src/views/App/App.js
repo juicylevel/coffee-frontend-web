@@ -4,6 +4,7 @@ import PrivateRoute from 'views/PrivateRoute';
 import Login from 'views/Login';
 import ChangePhone from 'views/ChangePhone';
 import Card from 'views/Card';
+import History from 'views/History';
 import Layout from './Layout';
 import NavBar from './NavBar';
 
@@ -21,6 +22,10 @@ export default () => (
                 <PrivateRoute 
                     path="/change-phone" 
                     component={ChangePhone} 
+                />
+                <PrivateRoute 
+                    path="/history" 
+                    component={History} 
                 />
                 <PrivateRoute 
                     path="/" 
