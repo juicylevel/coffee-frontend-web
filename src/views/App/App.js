@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Registration from 'views/Registration';
 import ChangePhone from 'views/ChangePhone';
+import Card from 'views/Card';
 import Layout from './Layout';
 
 export default () => (
@@ -19,6 +20,10 @@ export default () => (
                     <Route 
                         path="/change-phone" 
                         component={ChangePhone} 
+                    />
+                    <Route 
+                        path="/" 
+                        component={Card} 
                     />
                 </Switch>
             </Layout.Content>
