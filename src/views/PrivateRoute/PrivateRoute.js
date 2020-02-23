@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const PrivateRoute = ({
@@ -16,7 +16,7 @@ const PrivateRoute = ({
                 </Component>
             ) : (
                 <Redirect to={{
-                    pathname: '/',
+                    pathname: '/login',
                     state: { 
                         from: props.location 
                     }
@@ -28,7 +28,7 @@ const PrivateRoute = ({
 
 PrivateRoute.propTypes = {
     component: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool.isRequired,
+    isAuthenticated: PropTypes.bool,
 };
 
 export default PrivateRoute;
