@@ -19,12 +19,12 @@ export default () => (
                     component={Login} 
                 />
                 <PrivateRoute 
-                    path="/" 
-                    component={Card} 
-                />
-                <PrivateRoute 
                     path="/change-phone" 
                     component={ChangePhone} 
+                />
+                <PrivateRoute 
+                    path="/" 
+                    component={Card} 
                 />
             </Switch>
         </Layout.Content>

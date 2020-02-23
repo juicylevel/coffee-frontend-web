@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import MenuIcon from '@material-ui/icons/Menu';
 import Menu from '@material-ui/core/Menu';
@@ -41,10 +42,18 @@ const NavBar = props => {
                 open={!!anchorEl}
                 onClose={handleClose}
             >
-                <MenuItem onClick={handleClose}>
+                <MenuItem 
+                    to='/history'
+                    component={Link} 
+                    onClick={handleClose}
+                >
                     История заказов
                 </MenuItem>
-                <MenuItem onClick={handleClose}>
+                <MenuItem
+                    to='/change-phone'
+                    component={Link} 
+                    onClick={handleClose}
+                >
                     Сменить телефон
                 </MenuItem>
             </Menu>
