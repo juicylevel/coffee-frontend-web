@@ -20,7 +20,7 @@ const LayoutWrapper = styled.div`
 `;
 
 const Header = styled.header`
-    height: 80px;
+    height: 70px;
 
     border: 1px solid #c7c7c7;
     border-bottom: none;
