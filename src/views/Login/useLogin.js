@@ -7,24 +7,26 @@ import LOGIN from './login.graphql';
 export default () => {
     const { set: setSession } = useSession();
     const history = useHistory();
-    const [login] = useMutation(LOGIN);
 
-    const handleLogin = useCallback(({ phone }) => {
-        return login({
+    const [login] = useMutation(LOGIN, {
+        onCompleted: data => {
+            setSession(data.login.phone);
+            history.replace('/');
+        },
+        onError: ({ message }) => {
+            alert(message);
+        },
+    });
+
+    const handleLogin = useCallback(({ phone }) => (
+        login({
             variables: {
                 input: {
                     phone
                 }
-            },
-            onCompleted: () => {
-                setSession(phone);
-                history.replace('/');
-            },
-            onError: ({ message }) => {
-                alert(message);
-            },
-        });
-    }, []);
+            }
+        })
+    ), [login]);
 
     return {
         onLogin: handleLogin,

@@ -64,6 +64,13 @@ export default () => {
                 >
                     Сменить телефон
                 </MenuItem>
+                <MenuItem
+                    to='/logout'
+                    component={Link} 
+                    onClick={handleClose}
+                >
+                    Выход
+                </MenuItem>
             </Menu>
         </Wrapper>
     );
