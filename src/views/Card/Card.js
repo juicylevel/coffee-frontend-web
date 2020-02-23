@@ -11,7 +11,7 @@ const CenterWrapper = styled.div`
     height: 100%;
 `;
 
-const Registration = () => {
+const Card = () => {
     return (
         <Layout>
             <Layout.Header>
@@ -39,4 +39,4 @@ const Registration = () => {
     );
 };
 
-export default Registration;
+export default Card;

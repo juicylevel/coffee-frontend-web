@@ -4,7 +4,7 @@ import { TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import { FrameLayout as Layout } from 'views/common';
 
-const Registration = () => {
+const ChangePhone = () => {
     return (
         <Layout>
             <Layout.Header>
@@ -46,4 +46,4 @@ const Registration = () => {
     );
 };
 
-export default Registration;
+export default ChangePhone;
