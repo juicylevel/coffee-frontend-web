@@ -2,15 +2,15 @@ import { useCallback } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { useHistory } from 'react-router-dom';
 import { useSession } from 'provider';
-import LOGIN from './login.graphql';
+import CHANGE_PHONE from './changePhone.graphql';
 
 export default () => {
     const { set: setSession } = useSession();
     const history = useHistory();
 
-    const [login] = useMutation(LOGIN, {
+    const [changePhone] = useMutation(CHANGE_PHONE, {
         onCompleted: data => {
-            setSession(data.login.phone);
+            setSession(data.changePhone.phone);
             history.replace('/');
         },
         onError: ({ message }) => {
@@ -19,17 +19,19 @@ export default () => {
         },
     });
 
-    const handleLogin = useCallback(({ phone }) => (
-        login({
+    const handleSave = useCallback(({ newPhone }) => (
+        changePhone({
             variables: {
                 input: {
-                    phone
+                    // TODO
+                    accountId: 'xxQ1nOe0XSrw6YbsgKDq',
+                    newPhone
                 }
             }
         })
-    ), [login]);
+    ), [changePhone]);
 
     return {
-        onLogin: handleLogin,
+        onSave: handleSave,
     };
 };

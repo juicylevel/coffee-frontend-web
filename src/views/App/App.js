@@ -1,12 +1,12 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import NavBar from 'views/NavBar';
 import PrivateRoute from 'views/PrivateRoute';
 import Login from 'views/Login';
 import ChangePhone from 'views/ChangePhone';
 import Card from 'views/Card';
 import History from 'views/History';
 import Layout from './Layout';
-import NavBar from './NavBar';
 
 export default () => (
     <Layout>
