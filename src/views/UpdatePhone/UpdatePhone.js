@@ -8,14 +8,30 @@ import { adaptor } from 'components/form/utils';
 import { required, phone, composeValidators } from 'components/form/validation';
 import { FrameLayout as Layout } from 'views/common';
 
-const UpdatePhone = ({ onSave }) => {
+const validate = clientPhone => values => {
+    const errors = {};
+    const { phone, newPhone } = values;
+
+    if (phone !== clientPhone) {
+        errors.phone = 'Введён неправильный номер телефона';
+    } else if (newPhone === phone) {
+        errors.newPhone = 'Введён старый номер телефона';
+    }
+
+    return errors;
+}
+
+const UpdatePhone = ({ clientPhone, onSave }) => {
     return (
         <Layout>
             <Layout.Header>
                 Обновление номера телефона
             </Layout.Header>
             <Layout.Content>
-                <Form onSubmit={onSave}>
+                <Form 
+                    validate={validate(clientPhone)}
+                    onSubmit={onSave}
+                >
                     {({ handleSubmit, submitting }) => (
                         <form onSubmit={handleSubmit}>
                             <Grid 

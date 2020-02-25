@@ -5,7 +5,11 @@ import { useSession } from 'provider';
 import UPDATE_PHONE from './updatePhone.graphql';
 
 export default () => {
-    const { set: setSession } = useSession();
+    const { 
+        phone: clientPhone, // TODO
+        set: setSession 
+    } = useSession();
+
     const history = useHistory();
 
     const [updatePhone] = useMutation(UPDATE_PHONE, {
@@ -32,6 +36,7 @@ export default () => {
     ), [updatePhone]);
 
     return {
+        clientPhone,
         onSave: handleSave,
     };
 };
