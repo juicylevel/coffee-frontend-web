@@ -6,7 +6,11 @@ import UPDATE_PHONE from './updatePhone.graphql';
 
 export default () => {
     const { 
-        phone: clientPhone, // TODO
+        // TODO
+        value: {
+            accountId,
+            phone: clientPhone,
+        },
         set: setSession 
     } = useSession();
 

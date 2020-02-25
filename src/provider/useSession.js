@@ -2,12 +2,12 @@ import { isEmpty } from 'lodash';
 import useLocalstorage from '@rooks/use-localstorage';
 
 export default () => {
-    const  [value, set, remove] = useLocalstorage('coffee-client');
+    const  [value, set, remove] = useLocalstorage('coffee-account');
 
     return {
-        phone: value, 
-        isAuthenticated: !isEmpty(value),
+        account: value,
         set, 
         remove,
+        isAuthenticated: !isEmpty(value),
     };
 };

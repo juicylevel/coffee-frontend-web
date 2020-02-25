@@ -10,7 +10,8 @@ export default () => {
 
     const [login] = useMutation(LOGIN, {
         onCompleted: data => {
-            setSession(data.login.phone);
+            const { id: accountId, phone } = data.login;
+            setSession({ accountId, phone });
             history.replace('/');
         },
         onError: ({ message }) => {
