@@ -5,6 +5,7 @@ import { TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import { Form, Field } from 'react-final-form';
 import { adaptor } from 'components/form/utils';
+import { required, phone, composeValidators } from 'components/form/validation';
 import { FrameLayout as Layout } from 'views/common';
 
 const UpdatePhone = ({ onSave }) => {
@@ -29,6 +30,10 @@ const UpdatePhone = ({ onSave }) => {
                                         variant="outlined"
                                         label="Старый номер телефона"
                                         fullWidth
+                                        validate={composeValidators(
+                                            required,
+                                            phone
+                                        )}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -38,6 +43,10 @@ const UpdatePhone = ({ onSave }) => {
                                         variant="outlined"
                                         label="Новый номер телефона"
                                         fullWidth
+                                        validate={composeValidators(
+                                            required,
+                                            phone
+                                        )}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
