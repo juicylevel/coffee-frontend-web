@@ -5,9 +5,10 @@ export default Component => ({
     meta, 
     ...rest
 }) => {
-    const showError = meta.error && meta.touched;
+    const showError = ((meta.submitError && !meta.dirtySinceLastSubmit) || meta.error) && meta.touched;
+    
     const helperText = showError
-        ? meta.error
+        ? (meta.error || meta.submitError)
         : rest.helperText;
         
     return (

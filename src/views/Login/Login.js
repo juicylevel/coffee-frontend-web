@@ -4,6 +4,7 @@ import { TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import { Form, Field } from 'react-final-form';
 import { adaptor } from 'components/form/utils';
+import { required } from 'components/form/validation';
 import { FrameLayout as Layout } from 'views/common';
 
 const Login = ({ onLogin }) => {
@@ -28,6 +29,7 @@ const Login = ({ onLogin }) => {
                                         variant="outlined"
                                         label="Ваш номер телефона для входа"
                                         fullWidth
+                                        validate={required}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
