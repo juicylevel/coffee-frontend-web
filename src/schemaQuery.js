@@ -61,7 +61,7 @@ const createFragmentTypes = async () => {
         './src/fragmentTypes.json', 
         JSON.stringify(data), 
         error => {
-            if (err) {
+            if (error) {
                 console.error(chalk.red('Error writing fragmentTypes file: ' + error.message));
             } else {
                 console.log(chalk.green('Fragment types successfully extracted!'));

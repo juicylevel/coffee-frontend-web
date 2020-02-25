@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import NavBar from 'views/NavBar';
 import PrivateRoute from 'views/PrivateRoute';
 import Login from 'views/Login';
-import ChangePhone from 'views/ChangePhone';
+import UpdatePhone from 'views/UpdatePhone';
 import Card from 'views/Card';
 import History from 'views/History';
 import Layout from './Layout';
@@ -20,8 +20,8 @@ export default () => (
                     component={Login} 
                 />
                 <PrivateRoute 
-                    path="/change-phone" 
-                    component={ChangePhone} 
+                    path="/update-phone" 
+                    component={UpdatePhone} 
                 />
                 <PrivateRoute 
                     path="/history" 

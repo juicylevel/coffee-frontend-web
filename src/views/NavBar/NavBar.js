@@ -71,7 +71,7 @@ const NavBar = ({
                             История заказов
                         </MenuItem>
                         <MenuItem
-                            to='/change-phone'
+                            to='/update-phone'
                             component={Link} 
                             onClick={handleClose}
                         >

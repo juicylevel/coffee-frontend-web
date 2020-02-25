@@ -7,7 +7,7 @@ import { Form, Field } from 'react-final-form';
 import { adaptor } from 'components/form/utils';
 import { FrameLayout as Layout } from 'views/common';
 
-const ChangePhone = ({ onSave }) => {
+const UpdatePhone = ({ onSave }) => {
     return (
         <Layout>
             <Layout.Header>
@@ -47,6 +47,7 @@ const ChangePhone = ({ onSave }) => {
                                         fullWidth
                                         size="large"
                                         type="submit"
+                                        disabled={submitting}
                                     >
                                         Сохранить
                                     </Button>
@@ -60,8 +61,8 @@ const ChangePhone = ({ onSave }) => {
     );
 };
 
-ChangePhone.propTypes = {
+UpdatePhone.propTypes = {
     onSave: PropTypes.func,
 };
 
-export default ChangePhone;
+export default UpdatePhone;
