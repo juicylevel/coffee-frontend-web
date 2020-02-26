@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
-import { useSession } from 'provider';
+import { useSession } from 'views/common';
 
 export default () => {
     const { pathname } = useLocation();

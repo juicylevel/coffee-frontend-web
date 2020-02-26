@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { useHistory } from 'react-router-dom';
-import { useSession } from 'provider';
+import { useSession } from 'views/common';
 import LOGIN from './login.graphql';
 
 export default () => {
@@ -10,8 +10,8 @@ export default () => {
 
     const [login] = useMutation(LOGIN, {
         onCompleted: data => {
-            const { id: accountId, phone } = data.login;
-            setSession({ accountId, phone });
+            const { id: accountId } = data.login;
+            setSession(accountId);
             history.replace('/');
         },
         onError: ({ message }) => {

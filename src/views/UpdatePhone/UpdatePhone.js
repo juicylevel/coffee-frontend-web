@@ -8,11 +8,11 @@ import { adaptor } from 'components/form/utils';
 import { required, phone, composeValidators } from 'components/form/validation';
 import { FrameLayout as Layout } from 'views/common';
 
-const validate = clientPhone => values => {
+const validate = accountPhone => values => {
     const errors = {};
     const { phone, newPhone } = values;
 
-    if (phone !== clientPhone) {
+    if (phone !== accountPhone) {
         errors.phone = 'Введён неправильный номер телефона';
     } else if (newPhone === phone) {
         errors.newPhone = 'Введён старый номер телефона';
@@ -21,7 +21,11 @@ const validate = clientPhone => values => {
     return errors;
 }
 
-const UpdatePhone = ({ clientPhone, onSave }) => {
+const UpdatePhone = ({ 
+    loading, // TODO: disable ui
+    accountPhone, 
+    onSave 
+}) => {
     return (
         <Layout>
             <Layout.Header>
@@ -29,7 +33,7 @@ const UpdatePhone = ({ clientPhone, onSave }) => {
             </Layout.Header>
             <Layout.Content>
                 <Form 
-                    validate={validate(clientPhone)}
+                    validate={validate(accountPhone)}
                     onSubmit={onSave}
                 >
                     {({ handleSubmit, submitting }) => (
