@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { useHistory } from 'react-router-dom';
+import { get } from 'lodash';
 import ACCOUNT from './account.graphql';
 import UPDATE_PHONE from './updatePhone.graphql';
 
@@ -30,7 +31,7 @@ export default () => {
 
     return {
         loading,
-        accountPhone: data.account.phone,
+        accountPhone: get(data, 'account.phone'),
         onSave: handleSave,
     };
 };

@@ -6,7 +6,6 @@ import { HttpLink } from 'apollo-link-http';
 import { ApolloLink } from 'apollo-link';
 import { onError } from 'apollo-link-error';
 import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
-
 // import typeDefs from './typeDefs';
 // import resolvers from './resolvers';
 import { LOCAL_STORAGE, GRAPHQL_URL } from './constants';
@@ -34,27 +33,6 @@ const fragmentMatcher = new IntrospectionFragmentMatcher({
 const cache = new InMemoryCache({
     fragmentMatcher
 });
-
-/*let initialSession = {
-    __typename: 'Session'
-};*/
-
-// TODO
-/*
-if (loggedIn()) {
-    const token = getToken();
-    const session = getSession(token);
-    initialSession = {
-        ...session
-    };
-};
-*/
-
-/*cache.writeData({
-    data: {
-        session: initialSession,
-    }
-});*/
 
 const errorLink = onError(({ networkError, graphQLErrors }) => {
     if (networkError) {
