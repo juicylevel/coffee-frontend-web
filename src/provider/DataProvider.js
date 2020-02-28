@@ -14,7 +14,6 @@ import { LOCAL_STORAGE, GRAPHQL_URL } from './constants';
 import introspectionQueryResultData from '../fragmentTypes.json';
 
 const authMiddleware = new ApolloLink((operation, forward) => {
-    console.log(localStorage.getItem(LOCAL_STORAGE));
     operation.setContext({
         headers: {
             account: JSON.parse(localStorage.getItem(LOCAL_STORAGE)) || null,
@@ -32,6 +31,17 @@ const fragmentMatcher = new IntrospectionFragmentMatcher({
 });
 
 const cache = new InMemoryCache({
+    // https://github.com/apollographql/apollo-client/issues/5604
+    cacheRedirects: {
+        Query: {
+            account: (_, args, { getCacheKey }) => (
+                getCacheKey({
+                    id: args.id, 
+                    __typename: 'Account',  
+                })
+            )
+        },
+    },
     fragmentMatcher
 });
 
@@ -56,6 +66,7 @@ const link = ApolloLink.from([
 const client = new ApolloClient({
     link,
     cache,
+    dataIdFromObject: object => object.id,
     // typeDefs,
     // resolvers
 });

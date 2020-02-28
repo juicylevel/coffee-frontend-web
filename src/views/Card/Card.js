@@ -1,7 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Fab } from '@material-ui/core';
 import { FrameLayout as Layout } from 'views/common';
+import { MAX_PAID_ORDERS } from 'constants/orders';
 
 const CenterWrapper = styled.div`
     display: flex;
@@ -11,19 +13,34 @@ const CenterWrapper = styled.div`
     height: 100%;
 `;
 
-const Card = () => {
+const Card = ({ 
+    loading,
+    count, 
+    creating, 
+    onCreate 
+}) => {
+    const fabColor = count < MAX_PAID_ORDERS 
+        ? 'primary' 
+        : 'secondary';
     return (
         <Layout>
             <Layout.Header>
                 6-й кофе в подарок
             </Layout.Header>
             <Layout.Content>
+                {loading && (
+                    <p style={{ textAlign: 'center' }}>
+                        loading..
+                    </p>
+                )}
                 <CenterWrapper>
                     <Fab 
-                        color="primary" 
+                        color={fabColor} 
                         aria-label="create"
+                        disabled={loading || creating}
+                        onClick={onCreate}
                     >
-                        1
+                        {count}
                     </Fab>
                 </CenterWrapper>
                 <div style={{ 
@@ -37,6 +54,13 @@ const Card = () => {
             </Layout.Content>
         </Layout>
     );
+};
+
+Card.propTypes = {
+    loading: PropTypes.bool,
+    count: PropTypes.number,
+    creating: PropTypes.bool,
+    onCreate: PropTypes.func,
 };
 
 export default Card;

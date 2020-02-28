@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export default gql`
-    mutation CreateOrder($input: OrderInput!) {
-        createOrder(input: $input) {
+    mutation CreateOrder {
+        createOrder {
             id
             createAt
             isFree
