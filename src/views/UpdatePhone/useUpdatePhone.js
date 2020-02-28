@@ -11,6 +11,8 @@ export default () => {
 
     const [updatePhone] = useMutation(UPDATE_PHONE, {
         onCompleted: () => {
+            // TODO
+            alert('Телефон успешно обновлён!');
             history.replace('/');
         },
         onError: ({ message }) => {

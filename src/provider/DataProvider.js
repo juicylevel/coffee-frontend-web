@@ -14,9 +14,10 @@ import { LOCAL_STORAGE, GRAPHQL_URL } from './constants';
 import introspectionQueryResultData from '../fragmentTypes.json';
 
 const authMiddleware = new ApolloLink((operation, forward) => {
+    console.log(localStorage.getItem(LOCAL_STORAGE));
     operation.setContext({
         headers: {
-            account: localStorage.getItem(LOCAL_STORAGE) || null,
+            account: JSON.parse(localStorage.getItem(LOCAL_STORAGE)) || null,
         }
     });
     return forward(operation);
