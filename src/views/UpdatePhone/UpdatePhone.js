@@ -21,6 +21,8 @@ const validate = accountPhone => values => {
     return errors;
 }
 
+// TODO: use final form hooks
+
 const UpdatePhone = ({ 
     loading, // TODO: disable ui
     accountPhone, 
