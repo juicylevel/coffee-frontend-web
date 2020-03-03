@@ -1,25 +1,30 @@
-// https://www.apollographql.com/docs/react/data/pagination/
-// https://firebase.google.com/docs/firestore/query-data/query-cursors#paginate_a_query
 import { useQuery } from '@apollo/react-hooks';
 import produce from 'immer';
-import { get } from 'lodash';
+import { get, concat } from 'lodash';
 import ORDERS from './orders.graphql';
 import { useCallback } from 'react';
+
+const LIMIT = 6;
 
 export default () => {
     const { loading, data, fetchMore } = useQuery(ORDERS, {
         variables: {
             pagination: {
-                limit: 6,
+                limit: LIMIT,
                 offset: 0,
             },
         },
+        // TODO
+        fetchPolicy: 'network-only'
     });
 
     const handleFetchMore = useCallback(() => {
         fetchMore({
             variables: {
-                offset: data.orders.length
+                pagination: {
+                    limit: LIMIT,
+                    offset: data.orders.items.length
+                }
             },
             updateQuery: (prev, { fetchMoreResult }) => {
                 if (!fetchMoreResult) {
@@ -27,7 +32,10 @@ export default () => {
                 }
                 return produce(prev, draftResult => {
                     draftResult.orders.pagination = fetchMoreResult.orders.pagination;
-                    draftResult.orders.items.push(fetchMoreResult.orders.items)
+                    draftResult.orders.items = concat(
+                        draftResult.orders.items,
+                        fetchMoreResult.orders.items
+                    );
                 });
             },
         })

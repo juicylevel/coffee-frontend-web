@@ -32,6 +32,8 @@ const fragmentMatcher = new IntrospectionFragmentMatcher({
 
 const cache = new InMemoryCache({
     // https://github.com/apollographql/apollo-client/issues/5604
+    // get accountId from context (args.id)
+    /*
     cacheRedirects: {
         Query: {
             account: (_, args, { getCacheKey }) => (
@@ -42,6 +44,7 @@ const cache = new InMemoryCache({
             )
         },
     },
+    */
     fragmentMatcher
 });
 

@@ -8,22 +8,27 @@ import { FrameLayout as Layout } from 'views/common';
 
 const History = ({ 
     loading,
+    // TODO: = {}
     data: {
-        pagination,
+        pagination: {
+            hasNext
+        } = {},
         items,
-    },
+    } = {},
     onFetchMore,
 }) => {
     const historyItems = useMemo(() => (
         map(items, item => (
             <ListItem key={item.id}>
-                item
+                {item.createAt}
             </ListItem>
         ))
     ), [items]);
+
     const handleScroll = useCallback(() => {
         console.log('scroll')
     }, []);
+
     return (
         <Layout>
             <Layout.Header>
@@ -34,9 +39,11 @@ const History = ({
                     {historyItems}
                 </List>
                 <div style={{ textAlign: 'center'}}>
-                    <Button onClick={onFetchMore}>
-                        показать ещё
-                    </Button>
+                    {hasNext && (
+                        <Button onClick={onFetchMore}>
+                            показать ещё
+                        </Button>
+                    )}
                 </div>
             </Layout.Content>
         </Layout>
@@ -45,9 +52,13 @@ const History = ({
 
 History.propTypes = {
     loading: PropTypes.bool,
-    data: PropTypes.arrayOf(
-        PropTypes.object,
-    ),
+    data: PropTypes.shape({
+        pagination: PropTypes.shape({
+            hasNext: PropTypes.bool,
+            total: PropTypes.number,
+        }),
+        items: PropTypes.array,
+    }),
     onFetchMore: PropTypes.func,
 };
 
