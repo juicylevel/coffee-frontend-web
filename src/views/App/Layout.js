@@ -13,10 +13,10 @@ const CenterWrapper = styled.div`
 const LayoutWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 320px;
-    height: 568px;
-
-    // border: 1px solid white;
+    width: 100%;
+    height: 100%;
+    max-width: 425px;
+    max-height: 825px;
 `;
 
 const Header = styled.header`
