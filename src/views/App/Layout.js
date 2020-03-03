@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+// TODO: use material-ui Grid
+
 const CenterWrapper = styled.div`
     display: flex;
     align-items: center;

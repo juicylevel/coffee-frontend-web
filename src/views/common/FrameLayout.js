@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 
+// TODO: use material-ui Grid
+
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
