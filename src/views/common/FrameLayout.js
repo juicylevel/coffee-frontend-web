@@ -23,7 +23,7 @@ const Header = props => {
         <Typography 
             className={classes.root}
             align="center"
-            variant="h6"
+            variant="h5"
             {...props} 
         />
     );
