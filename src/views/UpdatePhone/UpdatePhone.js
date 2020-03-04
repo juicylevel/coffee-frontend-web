@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
-import { TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import { Form, Field } from 'react-final-form';
 import { adaptor } from 'components/form/utils';
+import { PhoneField } from 'components/form/fields';
 import { required, phone, composeValidators } from 'components/form/validation';
 import { FrameLayout as Layout } from 'views/common';
 
@@ -19,7 +19,7 @@ const validate = accountPhone => values => {
     }
 
     return errors;
-}
+};
 
 // TODO: use final form hooks
 
@@ -48,7 +48,7 @@ const UpdatePhone = ({
                                 <Grid item xs={12}>
                                     <Field
                                         name="phone"
-                                        render={adaptor(TextField)}
+                                        render={adaptor(PhoneField)}
                                         variant="outlined"
                                         label="Старый номер телефона"
                                         fullWidth
@@ -61,7 +61,7 @@ const UpdatePhone = ({
                                 <Grid item xs={12}>
                                     <Field
                                         name="newPhone"
-                                        render={adaptor(TextField)}
+                                        render={adaptor(PhoneField)}
                                         variant="outlined"
                                         label="Новый номер телефона"
                                         fullWidth

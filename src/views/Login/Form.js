@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { useForm, useField } from 'react-final-form-hooks';
 import { FieldAdaptor } from 'components/form/utils';
+import { PhoneField } from 'components/form/fields';
 import { required, phone, composeValidators } from 'components/form/validation';
 
 const Form = ({ onSubmit }) => {
@@ -24,7 +24,7 @@ const Form = ({ onSubmit }) => {
                 <Grid item xs={12}>
                     <FieldAdaptor
                         {...phoneFieldProps}
-                        component={TextField}
+                        component={PhoneField}
                         variant="outlined"
                         label="Ваш номер телефона для входа"
                         fullWidth

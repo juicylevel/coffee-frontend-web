@@ -6,6 +6,7 @@ import ListItem from '@material-ui/core/ListItem';
 import Button from '@material-ui/core/Button';
 import { FrameLayout as Layout } from 'views/common';
 
+// TODO: show empty placeholder
 const History = ({ 
     loading,
     // TODO: = {}

@@ -21,8 +21,10 @@
     "react-final-form": "^6.3.5",
     "react-final-form-hooks": "^2.0.2",
     "react-hooks-compose": "^2.0.6",
+    "react-input-mask": "^2.0.4",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.1",
+    "react-text-mask": "^5.4.3",
     "styled-components": "^5.0.1",
     "styled-normalize": "^8.0.7"
   },
