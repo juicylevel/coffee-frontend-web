@@ -14,7 +14,7 @@ const validate = currentPhone => values => {
     if (phone !== currentPhone) {
         errors.phone = 'Введён неправильный номер телефона';
     } else if (newPhone === phone) {
-        errors.newPhone = 'Введён старый номер телефона';
+        errors.newPhone = 'Введён текущий номер телефона';
     }
 
     return errors;
