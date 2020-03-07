@@ -1,10 +1,11 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-export default createMuiTheme({});/*({
+// TODO: load fonts
+// TODO: html, body, #root - 100% height
+
+export default createMuiTheme({
     palette: {
-        text: {
-            primary: '#fafafa',
-        }
+        type: 'dark',
     },
     typography: {
         fontFamily: [
@@ -12,4 +13,4 @@ export default createMuiTheme({});/*({
             'sans-serif',
         ].join(','),
     },
-});*/
+});

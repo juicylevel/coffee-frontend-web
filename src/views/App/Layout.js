@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import backgroundImg from 'images/background.jpg';
 
 // TODO: use material-ui Grid
 
@@ -19,6 +20,7 @@ const LayoutWrapper = styled.div`
     height: 100%;
     max-width: 425px;
     max-height: 825px;
+    background-image: url(${backgroundImg});
 `;
 
 const Header = styled.header`
