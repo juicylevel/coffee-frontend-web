@@ -57,7 +57,6 @@ const NavBar = ({
                         <MenuIcon />
                     </IconButton>
                     <Menu
-                        id="long-menu"
                         anchorEl={anchorEl}
                         keepMounted
                         open={!!anchorEl}

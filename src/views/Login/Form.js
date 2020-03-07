@@ -25,9 +25,10 @@ const Form = ({ onSubmit }) => {
                     <FieldAdaptor
                         {...phoneFieldProps}
                         component={PhoneField}
-                        variant="outlined"
+                        variant="filled"
                         label="Ваш номер телефона для входа"
                         fullWidth
+                        autoComplete="off"
                     />
                 </Grid>
                 <Grid item xs={12}>

@@ -9,13 +9,14 @@ import Typography from '@material-ui/core/Typography';
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 1.5rem;
+    padding: 1.6rem;
 `;
 
 const useStyles = makeStyles({
     root: {
         textTransform: 'uppercase',
-        marginBottom: '2rem',
+        fontWeight: 500,
+        marginBottom: '3rem',
     },
 });
 

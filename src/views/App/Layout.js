@@ -24,17 +24,12 @@ const LayoutWrapper = styled.div`
 `;
 
 const Header = styled.header`
-    height: 70px;
-
-    border: 1px solid #c7c7c7;
-    border-bottom: none;
+    height: 80px;
 `;
 
 const Content = styled.main`
     flex-grow: 1;
     overflow-y: auto;
-
-    border: 1px solid #c7c7c7;
 `;
 
 const Layout = ({ children }) => (

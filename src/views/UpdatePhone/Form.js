@@ -52,18 +52,20 @@ const Form = ({
                     <FieldAdaptor
                         {...phoneFieldProps}
                         component={PhoneField}
-                        variant="outlined"
+                        variant="filled"
                         label="Текущий номер телефона"
                         fullWidth
+                        autoComplete="off"
                     />
                 </Grid>
                 <Grid item xs={12}>
                     <FieldAdaptor
                         {...newPhoneFieldProps}
                         component={PhoneField}
-                        variant="outlined"
+                        variant="filled"
                         label="Новый номер телефона"
                         fullWidth
+                        autoComplete="off"
                     />
                 </Grid>
                 <Grid item xs={12}>
