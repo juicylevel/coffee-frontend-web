@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { OrderNumber } from 'components';
+
+const Wrapper = styled.div`
+    cursor: pointer;
+`;
 
 const OrderButton = ({
     value,
@@ -9,7 +14,12 @@ const OrderButton = ({
     onClick,
 }) => {
     return (
-        <OrderNumber value={value} />
+        <Wrapper onClick={onClick}>
+            <OrderNumber 
+                value={value} 
+                isPreFree={isPreFree} 
+            />
+        </Wrapper>
     );
 };
 

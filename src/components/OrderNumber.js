@@ -12,9 +12,11 @@ const Wrapper = styled.div`
     border: 6px solid #ad2a2f;
     border-width: calc(${props => props.size} * 6 / 70);
     background-color: ${
-        props => props.isFree 
-            ? '#ad2a2f' 
-            : '#e7e7e7'
+        props => props.isPreFree
+            ? '#7b3333'
+            : props.isFree 
+                ? '#ad2a2f' 
+                : '#e7e7e7'
     };
 
     display: flex;
@@ -26,7 +28,7 @@ const Num = styled.div`
     font-size: 50%;
     font-weight: 600;
     color: ${
-        props => props.isFree 
+        props => props.isPreFree || props.isFree
             ? '#e7e7e7' 
             : '#888888'
     };
@@ -35,14 +37,19 @@ const Num = styled.div`
 const OrderNumber = ({ 
     value, 
     size, 
-    isFree 
+    isFree,
+    isPreFree,
 }) => {
     return (
         <Wrapper 
             size={size}
             isFree={isFree}
+            isPreFree={isPreFree}
         >
-            <Num isFree={isFree}>
+            <Num 
+                isFree={isFree}
+                isPreFree={isPreFree}
+            >
                 {value}
             </Num>
         </Wrapper>
@@ -52,11 +59,14 @@ const OrderNumber = ({
 OrderNumber.propTypes = {
     value: PropTypes.number,
     size: PropTypes.string,
+    isPreFree: PropTypes.bool,
     isFree: PropTypes.bool,
 };
 
 OrderNumber.defaultProps = {
+    value: 0,
     size: '80px',
+    isPreFree: false,
     isFree: false,
 };
 

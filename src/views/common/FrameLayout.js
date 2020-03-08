@@ -32,14 +32,6 @@ const Header = props => {
     );
 };
 
-/*styled.h2`
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 1.28rem;
-    line-height: 1.7rem;
-    letter-spacing: 0.05rem;
-`;*/
-
 const Content = styled.div``;
 
 const FrameLayout = ({ children }) => (

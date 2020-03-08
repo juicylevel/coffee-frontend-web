@@ -13,6 +13,15 @@ const CenterWrapper = styled.div`
     height: 100%;
 `;
 
+const FreeNum = styled.span`
+    font-family: 'Raleway';
+    font-size: 4rem;
+`;
+
+const Highlighted = styled.span`
+    color: #ad2a2f;
+`;
+
 const Card = ({ 
     loading,
     count, 
@@ -23,7 +32,7 @@ const Card = ({
     return (
         <Layout>
             <Layout.Header>
-                6-й кофе в подарок
+                <FreeNum>6</FreeNum>-й кофе <Highlighted>в подарок</Highlighted>
             </Layout.Header>
             <Layout.Content>
                 {loading && (
