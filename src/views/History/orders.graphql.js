@@ -13,6 +13,7 @@ export default gql`
                 ... on Order {
                     id
                     createAt
+                    num
                     isFree
                 }
             }

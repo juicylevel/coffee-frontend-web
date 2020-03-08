@@ -2,9 +2,9 @@ import React, { useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
 import Button from '@material-ui/core/Button';
 import { FrameLayout as Layout } from 'views/common';
+import Order from './Order';
 
 // TODO: show empty placeholder
 const History = ({ 
@@ -20,9 +20,7 @@ const History = ({
 }) => {
     const historyItems = useMemo(() => (
         map(items, item => (
-            <ListItem key={item.id}>
-                {item.createAt}
-            </ListItem>
+            <Order key={item.id} {...item} />
         ))
     ), [items]);
 
