@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Fab } from '@material-ui/core';
-import { FrameLayout as Layout } from 'views/common';
 import { MAX_PAID_ORDERS } from 'constants/orders';
+import { FrameLayout as Layout } from 'views/common';
+import OrderButton from './OrderButton';
 
 const CenterWrapper = styled.div`
     display: flex;
@@ -19,9 +19,7 @@ const Card = ({
     creating, 
     onCreate 
 }) => {
-    const fabColor = count < MAX_PAID_ORDERS 
-        ? 'primary' 
-        : 'secondary';
+    const isPreFree = count === MAX_PAID_ORDERS;
     return (
         <Layout>
             <Layout.Header>
@@ -34,14 +32,12 @@ const Card = ({
                     </p>
                 )}
                 <CenterWrapper>
-                    <Fab 
-                        color={fabColor} 
-                        aria-label="create"
+                    <OrderButton
+                        value={count} 
+                        isPreFree={isPreFree}
                         disabled={loading || creating}
                         onClick={onCreate}
-                    >
-                        {count}
-                    </Fab>
+                    />
                 </CenterWrapper>
                 <div style={{ 
                     textAlign: 'center',
