@@ -35,16 +35,11 @@ const Card = ({
                 <FreeNum>6</FreeNum>-й кофе <Highlighted>в подарок</Highlighted>
             </Layout.Header>
             <Layout.Content>
-                {loading && (
-                    <p style={{ textAlign: 'center' }}>
-                        loading..
-                    </p>
-                )}
                 <CenterWrapper>
                     <OrderButton
                         value={count} 
                         isPreFree={isPreFree}
-                        disabled={loading || creating}
+                        busy={loading || creating}
                         onClick={onCreate}
                     />
                 </CenterWrapper>
