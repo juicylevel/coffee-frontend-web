@@ -30,12 +30,12 @@ const Pulse = styled.div`
     border: 10px solid rgba(173, 42, 47, .87);
     background: transparent;
     border-radius: 50%;
-    height: 80px;
-    width: 80px;
 
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
     opacity: 0;
 
     animation: ${pulse} 3s ease-out infinite;
@@ -46,7 +46,7 @@ const Wrapper = styled.div`
     width: 80px;
     height: 80px;
     cursor: pointer;
-    
+
     transition: transform .3s ease-out;
 
     &:hover {
