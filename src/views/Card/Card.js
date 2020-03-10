@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { MAX_PAID_ORDERS } from 'constants/orders';
+import { MarkedText } from 'components';
 import { FrameLayout as Layout } from 'views/common';
 import OrderButton from './OrderButton';
 
@@ -18,10 +19,6 @@ const FreeNum = styled.span`
     font-size: 4rem;
 `;
 
-const Highlighted = styled.span`
-    color: #ad2a2f;
-`;
-
 const Card = ({ 
     loading,
     count, 
@@ -32,7 +29,7 @@ const Card = ({
     return (
         <Layout>
             <Layout.Header>
-                <FreeNum>6</FreeNum>-й кофе <Highlighted>в подарок</Highlighted>
+                <FreeNum>6</FreeNum>-й кофе <MarkedText>в подарок</MarkedText>
             </Layout.Header>
             <Layout.Content>
                 <CenterWrapper>

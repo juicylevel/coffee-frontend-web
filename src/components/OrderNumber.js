@@ -36,25 +36,14 @@ const Num = styled.div`
 
 const OrderNumber = ({ 
     value, 
-    size, 
-    isFree,
-    isPreFree,
-}) => {
-    return (
-        <Wrapper 
-            size={size}
-            isFree={isFree}
-            isPreFree={isPreFree}
-        >
-            <Num 
-                isFree={isFree}
-                isPreFree={isPreFree}
-            >
-                {value}
-            </Num>
-        </Wrapper>
-    );
-};
+    ...rest
+}) => (
+    <Wrapper {...rest}>
+        <Num {...rest}>
+            {value}
+        </Num>
+    </Wrapper>
+);
 
 OrderNumber.propTypes = {
     value: PropTypes.number,

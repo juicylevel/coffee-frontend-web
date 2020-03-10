@@ -1,29 +1,57 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { keyframes, css } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { OrderNumber } from 'components';
 
-const rotate = keyframes`
-    from {
-        transform: rotate(0deg);
+const pulse = keyframes`
+    0% {
+        transform: scale(1);
+        opacity: 0;
     }
-    to {
-        transform: rotate(360deg);
+    25% {
+        transform: scale(1);
+        opacity: .1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: .3;
+    }
+    75% {
+        transform: scale(1.5);
+        opacity: .5;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
     }
 `;
 
-const rotateAnimation = props => (
-    css`${rotate} 1s linear infinite`
-);
+const Pulse = styled.div`
+    border: 10px solid rgba(173, 42, 47, .87);
+    background: transparent;
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+
+    animation: ${pulse} 3s ease-out infinite;
+`;
 
 const Wrapper = styled.div`
+    position: relative;
     width: 80px;
     height: 80px;
     cursor: pointer;
-    animation: ${props => props.busy 
-            ? rotateAnimation
-            : 'none' 
-    };
+    
+    transition: transform .3s ease-out;
+
+    &:hover {
+        transform: scale(1.1);
+    }
 `;
 
 
@@ -39,6 +67,9 @@ const OrderButton = ({
             busy={busy}
             onClick={onClick}
         >
+            {isPreFree && (
+                <Pulse />
+            )}
             <OrderNumber 
                 value={value} 
                 isPreFree={isPreFree} 
