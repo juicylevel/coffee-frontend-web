@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import { OrderNumber } from 'components';
+import { CircularProgress } from '@material-ui/core';
+
+const SIZE = 80;
+const LOADING_SIZE = SIZE + 2;
+const LOADING_OFFSET = (SIZE - LOADING_SIZE) / 2;
 
 const pulse = keyframes`
     0% {
@@ -26,34 +31,53 @@ const pulse = keyframes`
     }
 `;
 
-const Pulse = styled.div`
-    border: 10px solid rgba(173, 42, 47, .87);
-    background: transparent;
-    border-radius: 50%;
-
+const absoluteFullSize = css`
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    opacity: 0;
+`;
 
+const Pulse = styled.div`
+    ${absoluteFullSize}
+    z-index: 1;
+    border: 10px solid rgba(173, 42, 47, .87);
+    background: transparent;
+    border-radius: 50%;
+    opacity: 0;
     animation: ${pulse} 3s ease-out infinite;
 `;
 
-const Wrapper = styled.div`
-    position: relative;
-    width: 80px;
-    height: 80px;
+const InteractiveOrderNumber = styled(OrderNumber)`
+    position: absolute;
+    z-index: 2;
     cursor: pointer;
-
     transition: transform .3s ease-out;
-
     &:hover {
         transform: scale(1.1);
     }
 `;
 
+const Overlay = styled.div`
+    ${absoluteFullSize}
+    z-index: 3;
+    background-color: rgba(90, 90, 90, 0.3);
+    border-radius: 50%;
+`;
+
+const Loading = styled(CircularProgress)`
+    position: absolute;
+    top: ${LOADING_OFFSET}px;
+    left: ${LOADING_OFFSET}px;
+    z-index: 4;
+`;
+
+const Wrapper = styled.div`
+    position: relative;
+    width: ${SIZE}px;
+    height: ${SIZE}px;
+`;
 
 const OrderButton = ({
     value,
@@ -62,18 +86,29 @@ const OrderButton = ({
     busy,
     onClick,
 }) => {
+    const locked = disabled || busy;
+    const displayPulse = !locked && isPreFree;
+    const displayBorder = !busy;
+    const displayOverlay = locked;
+    const displayLoading = busy;
     return (
-        <Wrapper 
-            busy={busy}
-            onClick={onClick}
-        >
-            {isPreFree && (
+        <Wrapper>
+            {displayPulse && (
                 <Pulse />
             )}
-            <OrderNumber 
+            <InteractiveOrderNumber 
+                size={`${SIZE}px`}
                 value={value} 
+                displayBorder={displayBorder}
                 isPreFree={isPreFree} 
+                onClick={onClick}
             />
+            {displayOverlay && (
+                <Overlay />
+            )}
+            {displayLoading && (
+                <Loading size={`${LOADING_SIZE}px`} />
+            )}
         </Wrapper>
     );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { CircularProgress } from '@material-ui/core';
 import { MAX_PAID_ORDERS } from 'constants/orders';
 import { MarkedText } from 'components';
 import { FrameLayout as Layout } from 'views/common';
@@ -33,12 +34,16 @@ const Card = ({
             </Layout.Header>
             <Layout.Content>
                 <CenterWrapper>
-                    <OrderButton
-                        value={count} 
-                        isPreFree={isPreFree}
-                        busy={loading || creating}
-                        onClick={onCreate}
-                    />
+                    {loading ? (
+                        <CircularProgress size="80px" />
+                    ) : (
+                        <OrderButton
+                            value={count} 
+                            isPreFree={isPreFree}
+                            busy={creating}
+                            onClick={onCreate}
+                        />
+                    )}
                 </CenterWrapper>
                 <div style={{ 
                     textAlign: 'center',

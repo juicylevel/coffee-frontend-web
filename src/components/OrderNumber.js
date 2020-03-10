@@ -9,8 +9,13 @@ const Wrapper = styled.div`
     line-height: ${props => props.size};
 
     border-radius: 50%;
-    border: 6px solid #ad2a2f;
     border-width: calc(${props => props.size} * 6 / 70);
+    border: ${
+        props => props.displayBorder 
+            ? '6px solid #ad2a2f' 
+            : 'none'
+    };
+    
     background-color: ${
         props => props.isPreFree
             ? '#7b3333'
@@ -36,9 +41,13 @@ const Num = styled.div`
 
 const OrderNumber = ({ 
     value, 
+    onClick,
     ...rest
 }) => (
-    <Wrapper {...rest}>
+    <Wrapper 
+        {...rest} 
+        onClick={onClick}
+    >
         <Num {...rest}>
             {value}
         </Num>
@@ -57,6 +66,7 @@ OrderNumber.defaultProps = {
     size: '80px',
     isPreFree: false,
     isFree: false,
+    displayBorder: true,
 };
 
 export default OrderNumber;
