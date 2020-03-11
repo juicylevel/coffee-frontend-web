@@ -1,23 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { CircularProgress } from '@material-ui/core';
+import coffeeSvg from 'images/coffee.svg';
 import { MAX_PAID_ORDERS } from 'constants/orders';
 import { MarkedText } from 'components';
 import { FrameLayout as Layout } from 'views/common';
 import OrderButton from './OrderButton';
 
-const CenterWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
+const FreeNum = styled.span`
+    font-family: 'Raleway';
+    font-size: 4rem;
+`;
+
+const Coffee = styled.div`
+    position: absolute;
+    z-index: 1;
+    background-image: url(${coffeeSvg});
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 100%;
     height: 100%;
 `;
 
-const FreeNum = styled.span`
-    font-family: 'Raleway';
-    font-size: 4rem;
+const CoffeeButton = styled(OrderButton)`
+    position: absolute;
+    z-index: 2;
+    top: 139px;
+    left: calc((232px - 80px) / 2);
+`;
+
+const CoffeeWrapper = styled.div`
+    position: relative;
+    width: 232px;
+    height: 305px;
+    margin: 0 auto;
 `;
 
 const Card = ({ 
@@ -33,18 +49,15 @@ const Card = ({
                 <FreeNum>6</FreeNum>-й кофе <MarkedText>в подарок</MarkedText>
             </Layout.Header>
             <Layout.Content>
-                <CenterWrapper>
-                    {loading ? (
-                        <CircularProgress size="80px" />
-                    ) : (
-                        <OrderButton
-                            value={count} 
-                            isPreFree={isPreFree}
-                            busy={creating}
-                            onClick={onCreate}
-                        />
-                    )}
-                </CenterWrapper>
+                <CoffeeWrapper>
+                    <Coffee />
+                    <CoffeeButton
+                        value={count} 
+                        isPreFree={isPreFree}
+                        busy={loading || creating}
+                        onClick={onCreate}
+                    />
+                </CoffeeWrapper>
                 <div style={{ 
                     textAlign: 'center',
                     marginTop: '3rem',

@@ -6,7 +6,7 @@ import CREATE_ORDER from './createOrder.graphql';
 
 export default () => {
     const { loading, data } = useQuery(ACCOUNT);
-    const count = get(data, 'account.lastPaidOrders.length', 0);
+    const count = get(data, 'account.lastPaidOrders.length');
 
     const [createOrder, { loading: creating }] = useMutation(CREATE_ORDER, {
         // TODO: need manually update?

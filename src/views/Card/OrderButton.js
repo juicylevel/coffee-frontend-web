@@ -85,6 +85,7 @@ const OrderButton = ({
     disabled,
     busy,
     onClick,
+    ...rest
 }) => {
     const locked = disabled || busy;
     const displayPulse = !locked && isPreFree;
@@ -92,7 +93,7 @@ const OrderButton = ({
     const displayOverlay = locked;
     const displayLoading = busy;
     return (
-        <Wrapper>
+        <Wrapper {...rest}>
             {displayPulse && (
                 <Pulse />
             )}

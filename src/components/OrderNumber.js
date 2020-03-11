@@ -62,7 +62,6 @@ OrderNumber.propTypes = {
 };
 
 OrderNumber.defaultProps = {
-    value: 0,
     size: '80px',
     isPreFree: false,
     isFree: false,
