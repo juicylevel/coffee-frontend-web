@@ -48,7 +48,7 @@ const NavBar = ({
                     <ArrowBackIcon />
                 </IconButton>
             )}
-            {allowNav && (
+            {allowNav && ( // TODO
                 <>
                     <IconButton 
                         style={{ marginLeft: 'auto' }}

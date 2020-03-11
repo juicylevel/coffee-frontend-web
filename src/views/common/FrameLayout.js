@@ -40,7 +40,9 @@ const Header = props => {
     );
 };
 
-const Content = styled.div``;
+const Content = styled.div`
+
+`;
 
 const FrameLayout = ({ children }) => (
     <Wrapper>

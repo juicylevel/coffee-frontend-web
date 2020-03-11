@@ -7,7 +7,7 @@ import { FieldAdaptor } from 'components/form/utils';
 import { PhoneField } from 'components/form/fields';
 import { required, phone, composeValidators } from 'components/form/validation';
 
-const Form = ({ onSubmit }) => {
+const Form = ({ onSubmit, ...rest }) => {
     const { form, handleSubmit, submitting } = useForm({ onSubmit });
     const phoneFieldProps = useField(
         'phone', 
@@ -15,7 +15,7 @@ const Form = ({ onSubmit }) => {
         composeValidators(required, phone)
     );
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} {...rest}>
             <Grid 
                 container 
                 direction="column"

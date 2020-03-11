@@ -21,15 +21,22 @@ const LayoutWrapper = styled.div`
     max-width: 425px;
     max-height: 825px;
     background-image: url(${backgroundImg});
+    overflow-y: auto;
+    position: relative;
 `;
 
 const Header = styled.header`
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
     height: 80px;
+    z-index: 1000;
+    background-image: url(${backgroundImg});
 `;
 
 const Content = styled.main`
     flex-grow: 1;
-    overflow-y: auto;
 `;
 
 const Layout = ({ children }) => (
