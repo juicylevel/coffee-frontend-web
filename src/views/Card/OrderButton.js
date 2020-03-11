@@ -4,7 +4,7 @@ import styled, { keyframes, css } from 'styled-components';
 import { OrderNumber } from 'components';
 import { CircularProgress } from '@material-ui/core';
 
-const SIZE = 80;
+const SIZE = 75;
 const LOADING_SIZE = SIZE + 2;
 const LOADING_OFFSET = (SIZE - LOADING_SIZE) / 2;
 

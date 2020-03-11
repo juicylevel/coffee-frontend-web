@@ -10,6 +10,10 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     padding: 1.6rem;
+
+    @media (max-width: 320px) {
+        padding: 0 1.3rem;
+    }
 `;
 
 const useStyles = makeStyles({
@@ -17,6 +21,10 @@ const useStyles = makeStyles({
         textTransform: 'uppercase',
         fontWeight: 500,
         marginBottom: '3rem',
+        '@media (max-width: 320px)': { 
+            marginBottom: '2rem',
+            fontSize: '1.3rem',
+        }
     },
 });
 

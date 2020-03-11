@@ -9,7 +9,7 @@ import OrderButton from './OrderButton';
 
 const FreeNum = styled.span`
     font-family: 'Raleway';
-    font-size: 4rem;
+    font-size: 3rem;
 `;
 
 const Coffee = styled.div`
@@ -25,8 +25,8 @@ const Coffee = styled.div`
 const CoffeeButton = styled(OrderButton)`
     position: absolute;
     z-index: 2;
-    top: 139px;
-    left: calc((232px - 80px) / 2);
+    top: 142px;
+    left: calc((232px - 75px) / 2);
 `;
 
 const CoffeeWrapper = styled.div`
@@ -60,7 +60,7 @@ const Card = ({
                 </CoffeeWrapper>
                 <div style={{ 
                     textAlign: 'center',
-                    marginTop: '3rem',
+                    marginTop: '2.3rem',
                     textTransform: 'uppercase',
                     fontSize: '0.85rem',
                 }}>
