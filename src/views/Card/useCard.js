@@ -1,12 +1,19 @@
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { get } from 'lodash';
 import { MAX_PAID_ORDERS } from 'constants/orders';
+import * as State from 'constants/orderStates';
 import ACCOUNT from './account.graphql';
 import CREATE_ORDER from './createOrder.graphql';
 
 export default () => {
     const { loading, data } = useQuery(ACCOUNT);
     const count = get(data, 'account.lastPaidOrders.length');
+
+    const orderState = count === MAX_PAID_ORDERS
+        ? State.PRE_FREE
+        : count === 0 // TODO: get last order after createOrder
+            ? State.FREE
+            : State.DEFAULT;
 
     const [createOrder, { loading: creating }] = useMutation(CREATE_ORDER, {
         // TODO: need manually update?
@@ -15,22 +22,13 @@ export default () => {
             data.account.lastPaidOrders = lastPaidOrders;
             proxy.writeQuery({ query: ACCOUNT, data });
         },
-        onCompleted: (data) => {
-            const count = data.createOrder.length;
-            if (count === MAX_PAID_ORDERS) {
-                // TODO
-                alert('Следующий кофе бесплатный!');
-            } else {
-                // TODO
-                alert('Заказ кофе создан');
-            }
-        },
     });
 
     return {
         loading,
         creating,
         count,
+        orderState,
         onCreate: createOrder,
     };
 };

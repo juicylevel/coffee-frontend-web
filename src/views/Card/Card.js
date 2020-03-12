@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import coffeeSvg from 'images/coffee.svg';
-import { MAX_PAID_ORDERS } from 'constants/orders';
 import { MarkedText } from 'components';
 import { FrameLayout as Layout } from 'views/common';
 import OrderButton from './OrderButton';
+import Notification from './Notification';
 
 const FreeNum = styled.span`
     font-family: 'Raleway';
@@ -22,11 +22,12 @@ const Coffee = styled.div`
     height: 100%;
 `;
 
+// TODO 232px 75px
 const CoffeeButton = styled(OrderButton)`
     position: absolute;
     z-index: 2;
     top: 142px;
-    left: calc((232px - 75px) / 2);
+    left: calc((232px - 75px) / 2); 
 `;
 
 const CoffeeWrapper = styled.div`
@@ -39,10 +40,21 @@ const CoffeeWrapper = styled.div`
 const Card = ({ 
     loading,
     count, 
+    orderState,
     creating, 
     onCreate 
 }) => {
-    const isPreFree = count === MAX_PAID_ORDERS;
+    const [showNotification, setShowNotification] = useState(false);
+    const handleCreate = useCallback(() => {
+        onCreate().then(() => {
+            setShowNotification(true);
+        });
+    }, [
+        onCreate
+    ]);
+    const handleCloseNotification = useCallback(() => {
+        setShowNotification(false);
+    }, []);
     return (
         <Layout>
             <Layout.Header>
@@ -53,11 +65,16 @@ const Card = ({
                     <Coffee />
                     <CoffeeButton
                         value={count} 
-                        isPreFree={isPreFree}
+                        orderState={orderState}
                         busy={loading || creating}
-                        onClick={onCreate}
+                        onClick={handleCreate}
                     />
                 </CoffeeWrapper>
+                <Notification
+                    orderState={orderState}
+                    show={showNotification}
+                    onClose={handleCloseNotification}
+                />
                 <div style={{ 
                     textAlign: 'center',
                     marginTop: '2.3rem',

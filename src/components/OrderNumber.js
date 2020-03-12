@@ -17,11 +17,9 @@ const Wrapper = styled.div`
     };
     
     background-color: ${
-        props => props.isPreFree
-            ? '#7b3333'
-            : props.isFree 
-                ? '#ad2a2f' 
-                : '#e7e7e7'
+        props => props.highlighted
+            ? '#ad2a2f'
+            : '#e7e7e7'
     };
 
     display: flex;
@@ -33,7 +31,7 @@ const Num = styled.div`
     font-size: 50%;
     font-weight: 600;
     color: ${
-        props => props.isPreFree || props.isFree
+        props => props.highlighted
             ? '#e7e7e7' 
             : '#888888'
     };
@@ -57,14 +55,13 @@ const OrderNumber = ({
 OrderNumber.propTypes = {
     value: PropTypes.number,
     size: PropTypes.string,
-    isPreFree: PropTypes.bool,
-    isFree: PropTypes.bool,
+    displayBorder: PropTypes.bool,
+    highlighted: PropTypes.bool,
 };
 
 OrderNumber.defaultProps = {
     size: '80px',
-    isPreFree: false,
-    isFree: false,
+    highlighted: false,
     displayBorder: true,
 };
 

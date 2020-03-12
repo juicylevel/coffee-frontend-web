@@ -38,7 +38,7 @@ const Order = ({
                 <OrderNumber 
                     size="45px" 
                     value={num} 
-                    isFree={isFree}
+                    highlighted={isFree}
                 />
             </ListItemSecondaryAction>
         </ListItem>
