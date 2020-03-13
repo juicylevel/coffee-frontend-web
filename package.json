@@ -30,8 +30,8 @@
   },
   "scripts": {
     "build-fragment": "node src/schemaQuery.js",
-    "start": "npm run build-fragment && react-scripts start",
-    "build": "npm run build-fragment && react-scripts build",
+    "start": "npm run build-fragment -- --env=development && react-scripts start",
+    "build": "npm run build-fragment -- --env=production && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -51,6 +51,8 @@
     ]
   },
   "devDependencies": {
+    "dotenv": "^8.2.0",
+    "minimist": "^1.2.5",
     "node-fetch": "^2.6.0"
   }
 }

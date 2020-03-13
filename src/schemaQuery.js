@@ -1,14 +1,29 @@
-// running by "npm build-fragment" (package.json script)
+// running by "npm build-fragment -- --env=development|production" (package.json scripts)
 // see https://www.apollographql.com/docs/react/data/fragments/#fragments-on-unions-and-interfaces
 
 'use strict';
 
+const path = require('path');
+const minimist = require('minimist');
+const dotenv = require('dotenv');
 const fetch = require('node-fetch');
 const fs = require('fs');
 const chalk = require('react-dev-utils/chalk');
 
-// TODO
-const GRAPHQL_URL = `http://localhost:5000/coffee-7be5e/us-central1/graphql`;
+// read script arguments
+const args = minimist(process.argv.slice(2));
+process.env.NODE_ENV = args['env'];
+
+const { NODE_ENV } = process.env;
+
+// read environment variables from .env file
+const dotenvFile = path.resolve(`.env.${NODE_ENV}`);
+const result = dotenv.config({ path: dotenvFile });
+if (result.error) {
+    console.error(chalk.red(result.error.message));
+}
+
+const GRAPHQL_URL = process.env.REACT_APP_GRAPHQL_URL;
 
 const fetchSchema = async () => (
     fetch(GRAPHQL_URL, {
