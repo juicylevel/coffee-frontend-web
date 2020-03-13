@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import useCenteringFrameContent from './useCenteringFrameContent';
 import backgroundImg from 'images/background.jpg';
 
 // TODO: use material-ui Grid
@@ -39,13 +40,16 @@ const Content = styled.main`
     flex-grow: 1;
 `;
 
-const Layout = ({ children }) => (
-    <CenterWrapper>
-        <LayoutWrapper>
-            {children}
-        </LayoutWrapper>
-    </CenterWrapper>
-);
+const Layout = ({ children }) => {
+    useCenteringFrameContent();
+    return (
+        <CenterWrapper>
+            <LayoutWrapper className="app-layout-wrapper">
+                {children}
+            </LayoutWrapper>
+        </CenterWrapper>
+    );
+};
 
 Layout.propTypes = {
     children: PropTypes.oneOfType([

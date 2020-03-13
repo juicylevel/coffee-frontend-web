@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 
 // TODO: use material-ui Grid
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
     padding: 1.6rem;
@@ -40,7 +40,7 @@ const Header = props => {
     );
 };
 
-const Content = styled.div`
+const Content = styled.article`
 
 `;
 
