@@ -75,14 +75,6 @@ const Card = ({
                     show={showNotification}
                     onClose={handleCloseNotification}
                 />
-                <div style={{ 
-                    textAlign: 'center',
-                    marginTop: '2.3rem',
-                    textTransform: 'uppercase',
-                    fontSize: '0.85rem',
-                }}>
-                    постоянная акция
-                </div>
             </Layout.Content>
         </Layout>
     );

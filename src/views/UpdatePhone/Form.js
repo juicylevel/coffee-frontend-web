@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
 import { useForm, useField } from 'react-final-form-hooks';
 import { FieldAdaptor } from 'components/form/utils';
 import { PhoneField } from 'components/form/fields';
 import { required, phone, composeValidators } from 'components/form/validation';
+import { Button } from 'components';
 
 const validate = currentPhone => values => {
     const errors = {};
@@ -76,6 +76,7 @@ const Form = ({
                         size="large"
                         type="submit"
                         disabled={submitting}
+                        loading={submitting}
                     >
                         Сохранить
                     </Button>
