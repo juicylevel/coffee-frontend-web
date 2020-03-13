@@ -1,3 +1,3 @@
 export const LOCAL_STORAGE = 'coffee-account';
-export const BASE_URL = 'http://localhost:5000/coffee-7be5e/us-central1';
+export const BASE_URL = 'https://us-central1-coffee-7be5e.cloudfunctions.net';//'http://localhost:5000/coffee-7be5e/us-central1';
 export const GRAPHQL_URL = `${BASE_URL}/graphql`;
