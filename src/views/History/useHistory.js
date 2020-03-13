@@ -4,7 +4,7 @@ import { get, concat } from 'lodash';
 import ORDERS from './orders.graphql';
 import { useCallback } from 'react';
 
-const LIMIT = 6;
+const LIMIT = 8;
 
 export default () => {
     const { loading, data, fetchMore } = useQuery(ORDERS, {

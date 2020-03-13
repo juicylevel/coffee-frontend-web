@@ -1,6 +1,7 @@
 import React, { useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { map } from 'lodash';
+import { CircularProgress, Grid } from '@material-ui/core';
 import List from '@material-ui/core/List';
 import Button from '@material-ui/core/Button';
 import { FrameLayout as Layout } from 'views/common';
@@ -34,6 +35,13 @@ const History = ({
                 История заказов
             </Layout.Header>
             <Layout.Content>
+                {loading && (
+                    <Grid container justify="center">
+                        <Grid item>
+                            <CircularProgress size={72} />
+                        </Grid>
+                    </Grid>
+                )}
                 <List onScroll={handleScroll}>
                     {historyItems}
                 </List>
