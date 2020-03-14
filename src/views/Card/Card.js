@@ -58,7 +58,7 @@ const Card = ({
     return (
         <Layout>
             <Layout.Header>
-                <FreeNum>6</FreeNum>-й кофе <MarkedText>в подарок</MarkedText>
+                <FreeNum>6</FreeNum>-й кофе <MarkedText>в подарок!</MarkedText>
             </Layout.Header>
             <Layout.Content>
                 <CoffeeWrapper>
