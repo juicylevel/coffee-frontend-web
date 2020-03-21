@@ -21,6 +21,9 @@ export default props => (
         InputProps: {
             inputComponent: PhoneInputMask, 
         },
+        inputProps: {
+            inputMode: 'tel',
+        },
         ...props
     })
 );
