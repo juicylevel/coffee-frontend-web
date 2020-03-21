@@ -69,7 +69,8 @@ const link = ApolloLink.from([
 const client = new ApolloClient({
     link,
     cache,
-    dataIdFromObject: object => object.id,
+    connectToDevTools: true, // TODO: chack env mode (dev | prod)
+    dataIdFromObject: object => object.id, // TODO
     // typeDefs,
     // resolvers
 });
