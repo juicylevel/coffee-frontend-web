@@ -21,7 +21,7 @@ const LayoutWrapper = styled.div`
     height: 100%;
     max-width: 425px;
     max-height: 825px;
-    //background-image: url(${backgroundImg});
+    background-image: url(${backgroundImg});
     overflow-y: auto;
     position: relative;
 `;

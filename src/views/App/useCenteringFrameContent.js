@@ -16,6 +16,9 @@ const centeringFrameContent = () => {
     );
     
     frameContentEl.style.marginTop = `${frameContentMarginTop}px`;
+
+    console.log(window.screen.height);
+    document.querySelector('body').style.height = window.screen.height;
 };
 
 export default () => {
