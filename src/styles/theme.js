@@ -29,9 +29,15 @@ export default createMuiTheme({
     overrides: {
         MuiCssBaseline: {
             '@global': {
+                html: {
+                    height: '100vh',
+                },
                 body: {
                     height: '100vh',
                     minHeight: '100vh',
+                    '& #root': {
+                        height: '100vh',
+                    }
                 },
             },
         },
