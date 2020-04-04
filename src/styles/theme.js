@@ -30,7 +30,10 @@ export default createMuiTheme({
         MuiCssBaseline: {
             '@global': {
                 body: {
-                    
+                    backgroundRepeat: 'no-repeat !important',
+                    backgroundAttachment: 'fixed',
+                    backgroundPosition: 'top center !important',
+                    backgroundSize: 'cover !important',
                 },
             },
         },
