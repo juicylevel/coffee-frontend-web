@@ -1,4 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles';
+import backgroundImg from 'images/background.jpg';
 
 // TODO: load fonts
 // TODO: html, body, #root - 100% height
@@ -27,7 +28,13 @@ export default createMuiTheme({
         borderRadius: '6px',
     },
     overrides: {
-
+        MuiCssBaseline: {
+            '@global': {
+                body: {
+                    backgroundImage: `url(${backgroundImg})`,
+                },
+            },
+        },
         MuiButton: {
             containedSizeLarge: {
                 padding: '15px 14px',
