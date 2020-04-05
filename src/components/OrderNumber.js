@@ -36,6 +36,7 @@ const Num = styled.div`
             ? '#e7e7e7' 
             : '#888888'
     };
+    user-select: none;
 `;
 
 const OrderNumber = ({ 

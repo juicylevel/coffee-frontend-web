@@ -59,6 +59,7 @@ const InteractiveOrderNumber = styled(OrderNumber)`
     &:hover {
         transform: scale(1.1);
     }
+    -webkit-tap-highlight-color: transparent;
 `;
 
 const Overlay = styled.div`
