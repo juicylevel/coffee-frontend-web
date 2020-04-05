@@ -32,7 +32,11 @@ export default createMuiTheme({
                     height: '100%',
                 },
                 body: {
-                    height: '100vh',
+                    position: 'absolute',
+                    top: 0,
+                    right: 0,
+                    bottom: 0,
+                    left: 0,
                     '& #root': {
                         height: '100%',
                     }
