@@ -1,4 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles';
+import backgroundImg from 'images/background.jpg';
 
 // TODO: load fonts
 
@@ -33,6 +34,7 @@ export default createMuiTheme({
                 },
                 body: {
                     height: '100%',
+                    backgroundImage: `url(${backgroundImg})`,
                     '& #root': {
                         height: '100%',
                     }
