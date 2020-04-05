@@ -6,24 +6,18 @@ import backgroundImg from 'images/background.jpg';
 
 // TODO: use material-ui Grid
 
-const CenterWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-`;
-
-const LayoutWrapper = styled.div`
+const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: 100%;
     max-width: 425px;
-    max-height: 825px;
+    min-height: 825px;
+    margin: 0 auto;
     background-image: url(${backgroundImg});
-    overflow-y: auto;
     position: relative;
+
+    @media (max-height: 825px) {
+        min-height: 100vh;
+    }
 `;
 
 const Header = styled.header`
@@ -43,11 +37,9 @@ const Content = styled.main`
 const Layout = ({ children }) => {
     useCenteringFrameContent();
     return (
-        <CenterWrapper>
-            <LayoutWrapper className="app-layout-wrapper">
-                {children}
-            </LayoutWrapper>
-        </CenterWrapper>
+        <Wrapper className="app-layout-wrapper">
+            {children}
+        </Wrapper>
     );
 };
 
