@@ -9,12 +9,7 @@ export default () => {
     const session = useSession();
     const client = useApolloClient();
 
-    const allowBack = (
-        pathname !== '/' && 
-        pathname !== '/login'
-    );
-
-    const allowNav = pathname !== '/login';
+    const allowBack = pathname !== '/';
 
     const handleLogout = useCallback(() => {
         session.remove();
@@ -28,7 +23,6 @@ export default () => {
 
     return {
         allowBack,
-        allowNav,
         onLogout: handleLogout,
     };
 };

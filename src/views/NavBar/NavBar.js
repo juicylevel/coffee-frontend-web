@@ -13,11 +13,11 @@ const Wrapper = styled.div`
     align-items: center;
     height: 100%;
     padding: 0 1rem;
+    background-color: rgba(35, 35, 35, 0.7);
 `;
 
 const NavBar = ({ 
     allowBack,
-    allowNav,
     onLogout,
 }) => {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -48,40 +48,36 @@ const NavBar = ({
                     <ArrowBackIcon />
                 </IconButton>
             )}
-            {allowNav && ( // TODO
-                <>
-                    <IconButton 
-                        style={{ marginLeft: 'auto' }}
-                        onClick={handleClick}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Menu
-                        anchorEl={anchorEl}
-                        keepMounted
-                        open={!!anchorEl}
-                        onClose={handleClose}
-                    >
-                        <MenuItem 
-                            to='/history'
-                            component={Link} 
-                            onClick={handleClose}
-                        >
-                            История заказов
-                        </MenuItem>
-                        <MenuItem
-                            to='/update-phone'
-                            component={Link} 
-                            onClick={handleClose}
-                        >
-                            Сменить телефон
-                        </MenuItem>
-                        <MenuItem onClick={handleLogout}>
-                            Выход
-                        </MenuItem>
-                    </Menu>
-                </>
-            )}
+            <IconButton 
+                style={{ marginLeft: 'auto' }}
+                onClick={handleClick}
+            >
+                <MenuIcon />
+            </IconButton>
+            <Menu
+                anchorEl={anchorEl}
+                keepMounted
+                open={!!anchorEl}
+                onClose={handleClose}
+            >
+                <MenuItem 
+                    to='/history'
+                    component={Link} 
+                    onClick={handleClose}
+                >
+                    История заказов
+                </MenuItem>
+                <MenuItem
+                    to='/update-phone'
+                    component={Link} 
+                    onClick={handleClose}
+                >
+                    Сменить телефон
+                </MenuItem>
+                <MenuItem onClick={handleLogout}>
+                    Выход
+                </MenuItem>
+            </Menu>
         </Wrapper>
     );
 };
