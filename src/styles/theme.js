@@ -29,13 +29,13 @@ export default createMuiTheme({
         MuiCssBaseline: {
             '@global': {
                 html: {
-                    height: '100vh',
+                    height: '100%',
                 },
                 body: {
-                    height: '100vh',
-                    minHeight: '100vh',
+                    height: '100%',
+                    overscrollBehavior: 'contain',
                     '& #root': {
-                        height: '100vh',
+                        height: '100%',
                     }
                 },
             },
