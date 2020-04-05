@@ -3,6 +3,9 @@ import getSize from 'get-size';
 
 const centeringFrameContent = () => {
     try {
+        const height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);  
+        document.querySelector('body').style.height = `${height}px`;
+
         const frameContentEl = document.querySelector('main > section > article > *');
 
         const appWrapperHeight   = getSize('.app-layout-wrapper').innerHeight;
