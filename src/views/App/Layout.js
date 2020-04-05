@@ -13,6 +13,7 @@ const Wrapper = styled.div`
     min-height: 825px;
     margin: 0 auto;
     background-image: url(${backgroundImg});
+    background-attachment: fixed;
     position: relative;
 
     @media (max-height: 825px) {
