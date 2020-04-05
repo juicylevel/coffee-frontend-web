@@ -32,6 +32,7 @@ export default createMuiTheme({
                     height: '100%',
                 },
                 body: {
+                    height: '100%',
                     overscrollBehavior: 'none',
                     '& #root': {
                         height: '100%',
