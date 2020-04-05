@@ -10,6 +10,7 @@ import Notification from './Notification';
 const FreeNum = styled.span`
     font-family: 'Raleway';
     font-size: 3rem;
+    line-height: 0.4rem;
 `;
 
 const Coffee = styled.div`

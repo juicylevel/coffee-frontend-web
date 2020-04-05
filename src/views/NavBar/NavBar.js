@@ -13,7 +13,7 @@ const Wrapper = styled.div`
     align-items: center;
     height: 100%;
     padding: 0 1rem;
-    background-color: rgba(35, 35, 35, 0.7);
+    background-color: rgba(255, 255, 255, 0.09);
 `;
 
 const NavBar = ({ 

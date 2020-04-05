@@ -16,6 +16,7 @@ const Wrapper = styled.section`
 
 const useStyles = makeStyles({
     root: {
+        lineHeight: 1,
         textTransform: 'uppercase',
         fontWeight: 500,
         marginBottom: '3rem',

@@ -9,12 +9,13 @@ const Wrapper = styled.div`
     line-height: ${props => props.size};
 
     border-radius: 50%;
-    border-width: calc(${props => props.size} * 6 / 70);
     border: ${
         props => props.displayBorder 
             ? '6px solid #ad2a2f' 
             : 'none'
     };
+
+    border-width: calc(${props => props.size} * 6 / 65);
     
     background-color: ${
         props => props.highlighted
