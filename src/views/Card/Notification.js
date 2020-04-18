@@ -18,7 +18,7 @@ const CancelButton = withStyles({
 
 const MESSAGES = {
     [CREATE_ORDER]: 'Заказ успешно создан!',
-    [CREATE_PREFREE_ORDER]: 'Ура! Следующий кофе бесплатный!',
+    [CREATE_PREFREE_ORDER]: 'Следующий кофе бесплатный!',
     [FREE_ORDER]: 'Ура! Бесплатный кофе получен!',
 };
 
