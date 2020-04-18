@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import coffeeSvg from 'images/coffee.svg';
@@ -40,52 +40,46 @@ const CoffeeWrapper = styled.div`
 
 const Card = ({ 
     loading,
-    count, 
-    orderState,
     creating, 
-    onCreate 
-}) => {
-    const [showNotification, setShowNotification] = useState(false);
-    const handleCreate = useCallback(() => {
-        onCreate().then(() => {
-            setShowNotification(true);
-        });
-    }, [
-        onCreate
-    ]);
-    const handleCloseNotification = useCallback(() => {
-        setShowNotification(false);
-    }, []);
-    return (
-        <Layout>
-            <Layout.Header>
-                <FreeNum>6</FreeNum>-й кофе <MarkedText>в подарок!</MarkedText>
-            </Layout.Header>
-            <Layout.Content>
-                <CoffeeWrapper>
-                    <Coffee />
-                    <CoffeeButton
-                        value={count} 
-                        orderState={orderState}
-                        busy={loading || creating}
-                        onClick={handleCreate}
-                    />
-                </CoffeeWrapper>
-                <Notification
-                    orderState={orderState}
-                    show={showNotification}
-                    onClose={handleCloseNotification}
+    count, 
+    showNotification,
+    notification,
+    onCreate,
+    onCancelOrder,
+    onCloseNotification,
+}) => (
+    <Layout>
+        <Layout.Header>
+            <FreeNum>6</FreeNum>-й кофе <MarkedText>в подарок!</MarkedText>
+        </Layout.Header>
+        <Layout.Content>
+            <CoffeeWrapper>
+                <Coffee />
+                <CoffeeButton
+                    count={count} 
+                    busy={loading || creating}
+                    onClick={onCreate}
                 />
-            </Layout.Content>
-        </Layout>
-    );
-};
+            </CoffeeWrapper>
+            <Notification
+                type={notification}
+                show={showNotification}
+                onCancelOrder={onCancelOrder}
+                onClose={onCloseNotification}
+            />
+        </Layout.Content>
+    </Layout>
+);
 
 Card.propTypes = {
     loading: PropTypes.bool,
-    count: PropTypes.number,
     creating: PropTypes.bool,
+    count: PropTypes.number,
+    showNotification: PropTypes.bool,
+    notification: PropTypes.string,
     onCreate: PropTypes.func,
+    onCancelOrder: PropTypes.func,
+    onCloseNotification: PropTypes.func,
 };
 
 export default Card;

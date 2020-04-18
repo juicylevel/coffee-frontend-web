@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes, css } from 'styled-components';
-import * as State from 'constants/orderStates';
 import { OrderNumber } from 'components';
 import { CircularProgress } from '@material-ui/core';
+import { MAX_PAID_ORDERS } from 'constants/orders';
 
 // TODO ?
 const SIZE = 75;
@@ -83,16 +83,16 @@ const Wrapper = styled.div`
 `;
 
 const OrderButton = ({
-    value,
-    orderState,
+    count,
     disabled,
     busy,
     onClick,
     ...rest
 }) => {
     const locked = disabled || busy;
-    const highlighted = orderState !== State.DEFAULT;
-    const displayPulse = !locked && orderState === State.PRE_FREE;
+    const preFree = count === MAX_PAID_ORDERS;
+    const highlighted = preFree;
+    const displayPulse = !locked && preFree;
     const displayBorder = !busy;
     const displayOverlay = locked;
     const displayLoading = busy;
@@ -104,7 +104,7 @@ const OrderButton = ({
             )}
             <InteractiveOrderNumber 
                 size={`${SIZE}px`}
-                value={value} 
+                value={count} 
                 displayBorder={displayBorder}
                 highlighted={highlighted} 
                 onClick={onClick}
@@ -120,8 +120,7 @@ const OrderButton = ({
 };
 
 OrderButton.propTypes = {
-    value: PropTypes.number,
-    orderState: PropTypes.string,
+    count: PropTypes.number,
     disabled: PropTypes.bool,
     busy: PropTypes.bool,
     onClick: PropTypes.func,

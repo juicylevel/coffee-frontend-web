@@ -1,0 +1,3 @@
+export const CREATE_ORDER = 'CREATE_ORDER';
+export const CREATE_PREFREE_ORDER = 'CREATE_PREFREE_ORDER';
+export const FREE_ORDER = 'FREE_ORDER';
