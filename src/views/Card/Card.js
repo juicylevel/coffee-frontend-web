@@ -7,6 +7,9 @@ import { FrameLayout as Layout } from 'views/common';
 import OrderButton from './OrderButton';
 import Notification from './Notification';
 
+// TODO 232px 75px
+const BUTTON_LEFT = Math.round((232 - 75) / 2);
+
 const FreeNum = styled.span`
     font-family: 'Raleway';
     font-size: 3rem;
@@ -23,12 +26,12 @@ const Coffee = styled.div`
     height: 100%;
 `;
 
-// TODO 232px 75px
+
 const CoffeeButton = styled(OrderButton)`
     position: absolute;
     z-index: 2;
     top: 142px;
-    left: calc((232px - 75px) / 2); 
+    left: ${BUTTON_LEFT}px; 
 `;
 
 const CoffeeWrapper = styled.div`

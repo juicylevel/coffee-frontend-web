@@ -8,7 +8,7 @@ import { MAX_PAID_ORDERS } from 'constants/orders';
 // TODO ?
 const SIZE = 75;
 const LOADING_SIZE = SIZE + 2;
-const LOADING_OFFSET = (SIZE - LOADING_SIZE) / 2;
+const LOADING_OFFSET = Math.round((SIZE - LOADING_SIZE) / 2);
 
 const pulse = keyframes`
     0% {
@@ -55,17 +55,13 @@ const InteractiveOrderNumber = styled(OrderNumber)`
     position: absolute;
     z-index: 2;
     cursor: pointer;
-    transition: transform .3s ease-out;
-    &:hover {
-        transform: scale(1.1);
-    }
     -webkit-tap-highlight-color: transparent;
 `;
 
 const Overlay = styled.div`
     ${absoluteFullSize}
     z-index: 3;
-    background-color: rgba(90, 90, 90, 0.3);
+    background-color: rgba(90, 90, 90, 0.4);
     border-radius: 50%;
 `;
 
@@ -80,6 +76,10 @@ const Wrapper = styled.div`
     position: relative;
     width: ${SIZE}px;
     height: ${SIZE}px;
+    transition: transform .3s ease-out;
+    &:hover {
+        transform: scale(1.1);
+    }
 `;
 
 const OrderButton = ({
