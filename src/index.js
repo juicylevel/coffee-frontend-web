@@ -6,12 +6,14 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { theme } from 'styles';
 import { DataProvider } from 'provider';
+import { ScrollTop } from 'components';
 import { ScrollToTop } from 'views/common';
 import App from 'views/App';
 
 const Root = () => (
     <Router>
         <ScrollToTop />
+        <ScrollTop />
         <DataProvider>
             <ThemeProvider theme={theme}>
                 <CssBaseline />

@@ -4,7 +4,7 @@ import { get, concat } from 'lodash';
 import ORDERS from './orders.graphql';
 import { useCallback } from 'react';
 
-const LIMIT = 8;
+const LIMIT = 10;
 
 export default () => {
     const { loading, data, fetchMore } = useQuery(ORDERS, {
@@ -14,11 +14,15 @@ export default () => {
                 offset: 0,
             },
         },
-        // TODO
-        fetchPolicy: 'network-only'
+        fetchPolicy: 'network-only',
+        notifyOnNetworkStatusChange: true,
     });
 
-    const handleFetchMore = useCallback(() => {
+    const handleFetchNext = useCallback(() => {
+        if (loading || !data.orders.pagination.hasNext) {
+            return;
+        }
+
         fetchMore({
             variables: {
                 pagination: {
@@ -38,8 +42,9 @@ export default () => {
                     );
                 });
             },
-        })
+        });
     }, [
+        loading,
         data, 
         fetchMore
     ]);
@@ -49,6 +54,6 @@ export default () => {
     return {
         loading,
         data: orders,
-        onFetchMore: handleFetchMore,
+        onFetchNext: handleFetchNext,
     };
 };

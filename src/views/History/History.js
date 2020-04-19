@@ -1,9 +1,9 @@
-import React, { useMemo, useCallback } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { map } from 'lodash';
+import { map, size } from 'lodash';
 import { CircularProgress, Grid } from '@material-ui/core';
 import List from '@material-ui/core/List';
-import Button from '@material-ui/core/Button';
+import { useInfinityScroll } from 'components';
 import { FrameLayout as Layout } from 'views/common';
 import Order from './Order';
 
@@ -17,17 +17,22 @@ const History = ({
         } = {},
         items,
     } = {},
-    onFetchMore,
+    onFetchNext,
 }) => {
+    const initialLoading = loading && size(items) === 0;
+    const infinityLoading = loading && size(items) > 0;
+
+    useInfinityScroll({
+        loading,
+        hasNext,
+        onFetchNext,
+    });
+
     const historyItems = useMemo(() => (
         map(items, item => (
             <Order key={item.id} {...item} />
         ))
     ), [items]);
-
-    const handleScroll = useCallback(() => {
-        console.log('scroll')
-    }, []);
 
     return (
         <Layout>
@@ -35,23 +40,23 @@ const History = ({
                 История заказов
             </Layout.Header>
             <Layout.Content>
-                {loading && (
+                {initialLoading && (
                     <Grid container justify="center">
                         <Grid item>
                             <CircularProgress size={72} />
                         </Grid>
                     </Grid>
                 )}
-                <List onScroll={handleScroll}>
+                <List>
                     {historyItems}
                 </List>
-                <div style={{ textAlign: 'center'}}>
-                    {hasNext && (
-                        <Button onClick={onFetchMore}>
-                            показать ещё
-                        </Button>
-                    )}
-                </div>
+                {infinityLoading && (
+                    <Grid container justify="center">
+                        <Grid item>
+                            <CircularProgress />
+                        </Grid>
+                    </Grid>
+                )}
             </Layout.Content>
         </Layout>
     );
