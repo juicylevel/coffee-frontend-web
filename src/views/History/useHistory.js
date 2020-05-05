@@ -31,6 +31,7 @@ export default () => {
                 }
             },
             updateQuery: (prev, { fetchMoreResult }) => {
+                // TODO: check error (return)
                 if (!fetchMoreResult) {
                     return prev;
                 }

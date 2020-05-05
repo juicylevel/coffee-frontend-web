@@ -1,13 +1,26 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { map, size } from 'lodash';
+import { map, size, isEmpty } from 'lodash';
+import styled from 'styled-components';
 import { CircularProgress, Grid } from '@material-ui/core';
 import List from '@material-ui/core/List';
+import coffeeTimeSvg from 'images/coffee-time.svg';
 import { useInfinityScroll } from 'components';
 import { FrameLayout as Layout } from 'views/common';
 import Order from './Order';
 
-// TODO: show empty placeholder
+const Empty = styled.div`
+    text-align: center;
+`;
+
+const CoffeeTime = styled.div`
+    background-image: url(${coffeeTimeSvg});
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 8rem;
+    height: 8rem;
+`;
+
 const History = ({ 
     loading,
     // TODO: = {}
@@ -20,7 +33,9 @@ const History = ({
     onFetchNext,
 }) => {
     const initialLoading = loading && size(items) === 0;
-    const infinityLoading = loading && size(items) > 0;
+    const hasData = !isEmpty(items);
+
+    const progressSize = initialLoading ? 72 : 40;
 
     useInfinityScroll({
         loading,
@@ -40,20 +55,33 @@ const History = ({
                 История заказов
             </Layout.Header>
             <Layout.Content>
-                {initialLoading && (
-                    <Grid container justify="center">
+                {hasData && (
+                    <List>
+                        {historyItems}
+                    </List>
+                )}
+                {!loading && !hasData && (
+                    <Grid 
+                        container 
+                        direction="column" 
+                        alignItems="center"
+                        spacing={3}
+                    >
                         <Grid item>
-                            <CircularProgress size={72} />
+                            <CoffeeTime />
+                        </Grid>
+                        <Grid item>
+                            <Empty>
+                                Вы не сделали ещё ни одного заказа<br />
+                                Гоу за кофой!
+                            </Empty>
                         </Grid>
                     </Grid>
                 )}
-                <List>
-                    {historyItems}
-                </List>
-                {infinityLoading && (
+                {loading && (
                     <Grid container justify="center">
                         <Grid item>
-                            <CircularProgress />
+                            <CircularProgress size={progressSize} />
                         </Grid>
                     </Grid>
                 )}
